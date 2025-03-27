@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="header">
+    <text class="title">我的便签</text>
+    <button class="scan-btn" bindtap="scanNFC">扫描NFC</button>
+  </view>
+
+  <view class="notes-grid" wx:if="{{!loading}}">
+    <view class="note-card" 
+          wx:for="{{notes}}" 
+          wx:key="key"
+          data-key="{{item.key}}"
+          bindtap="onNoteTap">
+      <view class="note-content">{{item.value || '空便签'}}</view>
+      <view class="note-date">{{item.createTime}}</view>
+    </view>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <view class="empty" wx:if="{{!loading && notes.length === 0}}">
+    <text>暂无便签，请扫描NFC创建新便签</text>
+  </view>
+</view> 

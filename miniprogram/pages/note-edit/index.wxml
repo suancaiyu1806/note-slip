@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="editor-container">
+    <textarea class="note-editor"
+              value="{{content}}"
+              placeholder="请输入便签内容..."
+              bindinput="onContentInput"
+              maxlength="-1"
+              auto-height
+              show-confirm-bar="{{false}}"
+              disabled="{{loading}}">
+    </textarea>
+  </view>
+
+  <view class="button-group">
+    <button class="btn save-btn" bindtap="saveNote" disabled="{{loading}}">保存</button>
+    <button class="btn clear-btn" bindtap="clearNote" disabled="{{loading}}">清空</button>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+</view> 
