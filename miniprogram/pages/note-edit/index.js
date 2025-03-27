@@ -7,10 +7,11 @@ Page({
     loading: true
   },
 
-  onLoad: function(options) {
-    if (options.key) {
-      this.setData({ noteKey: options.key })
-      this.loadNoteContent()
+  onLoad: function() {
+    var curKey = app.globalData.curKey;
+    if (curKey) {
+      this.setData({ noteKey: curKey });
+      this.loadNoteContent();
     }
   },
 

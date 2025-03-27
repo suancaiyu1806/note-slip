@@ -1,5 +1,5 @@
 <view class="container">
-  <view class="editor-container">
+  <view class="editor-container"  wx:if="{{!loading}}">
     <textarea class="note-editor"
               value="{{content}}"
               placeholder="请输入便签内容..."
@@ -11,7 +11,7 @@
     </textarea>
   </view>
 
-  <view class="button-group">
+  <view class="button-group"  wx:if="{{!loading}}">
     <button class="btn save-btn" bindtap="saveNote" disabled="{{loading}}">保存</button>
     <button class="btn clear-btn" bindtap="clearNote" disabled="{{loading}}">清空</button>
   </view>

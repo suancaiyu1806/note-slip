@@ -10,10 +10,25 @@
     "navigationBarTitleText": "NFC便签",
     "navigationBarTextStyle": "black"
   },
+  "tabBar": {
+    "color": "#A2A9B0",
+    "selectedColor": "#07C160",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "home1",
+        "iconPath": "images/icons/home.png",
+        "selectedIconPath": "images/icons/home-active.png"
+      },{
+        "pagePath": "pages/note-edit/index",
+        "text": "基础能力",
+        "iconPath": "images/icons/examples.png",
+        "selectedIconPath": "images/icons/examples-active.png"
+      }
+    ]
+  },
   "sitemapLocation": "sitemap.json",
   "style": "v2",
-  "lazyCodeLoading": "requiredComponents",
-  "requiredPrivateInfos": [
-    "getNFCAdapter"
-  ]
+  "requiredPrivateInfos": []
 }

@@ -38,8 +38,9 @@ Page({
   // 点击便签卡片
   onNoteTap: function(e) {
     const { key } = e.currentTarget.dataset
-    wx.navigateTo({
-      url: `/pages/note-edit/index?key=${key}`
+    app.globalData.curKey = key;
+    wx.switchTab({
+      url: `/pages/note-edit/index`,
     })
   },
 
@@ -84,11 +85,12 @@ Page({
         }
       })
 
-      if (result.exists) {
+      if (result?.exists) {
         // 便签已存在，跳转到编辑页面
-        wx.navigateTo({
-          url: `/pages/note-edit/index?key=${result.key}`
-        })
+          app.globalData.curKey = result.key
+          wx.switchTab({
+            url: `/pages/note-edit/index`
+          })
       } else {
         // 创建新便签
         const createResult = await wx.cloud.callFunction({
@@ -99,8 +101,9 @@ Page({
         })
         
         if (createResult.result.success) {
-          wx.navigateTo({
-            url: `/pages/note-edit/index?key=${createResult.result.key}`
+          app.globalData.curKey = createResult.result.key
+          wx.switchTab({
+            url: `/pages/note-edit/index`
           })
         }
       }
