@@ -8,10 +8,20 @@ Page({
 
   onLoad: function() {
     this.loadNotes()
+    this.startScanning()
   },
 
   onShow: function() {
     this.loadNotes()
+    this.startScanning()
+  },
+
+  onHide: function() {
+    this.stopScanning()
+  },
+
+  onUnload: function() {
+    this.stopScanning()
   },
 
   // 格式化时间
@@ -62,8 +72,8 @@ Page({
     })
   },
 
-  // 扫描NFC
-  async scanNFC() {
+  // 开始扫描
+  startScanning: function() {
     try {
       const nfcAdapter = wx.getNFCAdapter()
       nfcAdapter.startDiscovery({
@@ -90,6 +100,23 @@ Page({
         title: 'NFC初始化失败',
         icon: 'none'
       })
+    }
+  },
+
+  // 停止扫描
+  stopScanning: function() {
+    try {
+      const nfcAdapter = wx.getNFCAdapter()
+      nfcAdapter.stopDiscovery({
+        success: (res) => {
+          console.log('停止搜索NFC设备')
+        },
+        fail: (err) => {
+          console.error('停止NFC搜索失败：', err)
+        }
+      })
+    } catch (error) {
+      console.error('停止NFC失败：', error)
     }
   },
 

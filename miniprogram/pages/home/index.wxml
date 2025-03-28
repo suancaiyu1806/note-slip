@@ -1,6 +1,6 @@
 <view class="container">
   <view class="header">
-    <button class="scan-btn" bindtap="scanNFC">扫描NFC</button>
+    <text class="title">我的便签</text>
   </view>
 
   <view class="notes-grid" wx:if="{{!loading}}">
