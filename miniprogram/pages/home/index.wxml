@@ -1,6 +1,5 @@
 <view class="container">
   <view class="header">
-    <text class="title">我的便签</text>
     <button class="scan-btn" bindtap="scanNFC">扫描NFC</button>
   </view>
 

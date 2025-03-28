@@ -1,7 +1,7 @@
 .container {
-  padding: 20rpx;
+  padding: 16px;
   min-height: 100vh;
-  background: #f5f5f5;
+  background: var(--background-default);
   display: flex;
   flex-direction: column;
 }
@@ -9,49 +9,72 @@
 .editor-container {
   width: 100%;
   flex: 1;
-  background: white;
-  border-radius: 12rpx;
-  padding: 20rpx;
-  margin-bottom: 20rpx;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  background: var(--background-paper);
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--elevation-1);
+  overflow: hidden;
 }
 
 .note-editor {
   width: 100%;
-  min-height: 400rpx;
-  font-size: 28rpx;
-  line-height: 1.6;
-  color: #333;
+  height: 72vh;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  padding: 8px;
 }
 
 .button-group {
   display: flex;
-  gap: 20rpx;
-  padding: 20rpx 0;
+  gap: 16px;
+  padding: 16px 0;
 }
 
 .btn {
   flex: 1;
-  height: 80rpx;
-  line-height: 80rpx;
-  text-align: center;
-  border-radius: 40rpx;
-  font-size: 28rpx;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--elevation-1);
+  transition: all 0.3s ease;
+}
+
+.btn:active {
+  box-shadow: var(--elevation-2);
 }
 
 .save-btn {
-  background: #07c160;
+  background: var(--primary-color);
   color: white;
 }
 
+.save-btn:active {
+  background: var(--primary-dark);
+}
+
 .clear-btn {
-  background: #f5f5f5;
-  color: #666;
+  background: var(--background-paper);
+  color: var(--text-primary);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.clear-btn:active {
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .loading {
   text-align: center;
-  padding: 40rpx;
-  color: #999;
-  font-size: 28rpx;
-} 
+  padding: 32px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  background: var(--background-paper);
+  border-radius: 8px;
+  box-shadow: var(--elevation-1);
+}

@@ -5,7 +5,6 @@
               placeholder="请输入便签内容..."
               bindinput="onContentInput"
               maxlength="-1"
-              auto-height
               show-confirm-bar="{{false}}"
               disabled="{{loading}}">
     </textarea>

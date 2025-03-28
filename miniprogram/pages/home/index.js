@@ -14,6 +14,18 @@ Page({
     this.loadNotes()
   },
 
+  // 格式化时间
+  formatDate: function(dateStr) {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    return `${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
+  },
+
   // 加载用户的所有便签
   async loadNotes() {
     try {
@@ -21,8 +33,14 @@ Page({
         name: 'listNotes'
       })
       
+      // 处理时间格式
+      const formattedNotes = (result.data || []).map(note => ({
+        ...note,
+        createTime: this.formatDate(note.createTime)
+      }));
+      
       this.setData({
-        notes: result.data || [],
+        notes: formattedNotes,
         loading: false
       })
     } catch (error) {
