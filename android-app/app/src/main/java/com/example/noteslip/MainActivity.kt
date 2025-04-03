@@ -6,11 +6,14 @@ import android.nfc.NdefMessage
 import android.nfc.NdefRecord
 import android.nfc.NfcAdapter
 import android.nfc.Tag
+import android.nfc.tech.Ndef
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.demo.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.nio.charset.Charset
 import java.util.*
@@ -28,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         // 初始化NFC
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
-        if (nfcAdapter == null) {
+        if (!nfcAdapter.isEnabled) {
             Toast.makeText(this, "设备不支持NFC", Toast.LENGTH_SHORT).show()
             finish()
             return
@@ -80,11 +83,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadNotes() {
-        // 从本地数据库加载便签
-        val db = NoteDatabase.getInstance(this)
-        notes.clear()
-        notes.addAll(db.noteDao().getAllNotes())
-        noteAdapter.notifyDataSetChanged()
+        try {
+            // 从本地数据库加载便签
+            val context = applicationContext
+            val db = NoteDatabase.getInstance(context)
+            notes.clear()
+            notes.addAll(db.noteDao().getAllNotes())
+            noteAdapter.notifyDataSetChanged()
+        } catch (e: Exception) {
+            // 捕获异常并打印日志
+            Log.e("NoteDatabaseError", "Failed to get database instance", e)
+            // 可以在这里添加更多的错误处理逻辑，比如给用户提示
+        }
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -154,7 +164,7 @@ class MainActivity : AppCompatActivity() {
             if (!ndef.isWritable) {
                 throw Exception("NFC标签不可写")
             }
-            if (ndef.maxTransceiveLength < message.byteArrayLength) {
+            if (ndef.maxSize < message.byteArrayLength) {
                 throw Exception("NFC标签容量不足")
             }
             ndef.writeNdefMessage(message)
