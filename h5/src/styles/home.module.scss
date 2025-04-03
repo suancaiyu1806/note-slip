@@ -1,0 +1,29 @@
+.container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+
+  .header {
+    margin-bottom: 20px;
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  }
+
+  .loading {
+    font-size: 18px;
+    color: #999;
+  }
+
+  .empty {
+    font-size: 18px;
+    color: #999;
+  }
+
+  .notesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}

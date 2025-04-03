@@ -1,0 +1,21 @@
+.noteCard {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  .noteContent {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .noteDate {
+    font-size: 14px;
+    color: #999;
+  }
+}
