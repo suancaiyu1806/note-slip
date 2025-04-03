@@ -1,6 +1,23 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite + PWA Note Slip
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a rewrite of the WeChat Mini Program Note Slip into a Progressive Web App (PWA) using React, TypeScript, and SCSS. It is compiled and run with Vite, and note data is stored locally.
+
+## Features
+- Create new notes
+- View note list
+- View note details
+- Edit and update notes
+
+## Development Environment
+- Node.js (version 14 or higher)
+- npm (version 6 or higher)
+
+## Installation
+1. Clone the repository to your local machine:
+   ```bash
+   git clone /Users/bytedance/Documents/CODES/GitHub/note-slip/h5
+   cd h5
+   ```
 
 Currently, two official plugins are available:
 
