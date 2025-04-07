@@ -163,6 +163,7 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Toast.makeText(this, "写入NFC标签失败", Toast.LENGTH_SHORT).show()
         }
+        isCreatingNote = false
     
         // 跳转到编辑页面
         val editIntent = Intent(this, NoteEditActivity::class.java)
@@ -171,32 +172,56 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun writeSchemeToTag(tag: Tag, nfcId: String) {
+        // 清空NFC标签
+        try {
+            val ndef = Ndef.get(tag)
+            if (ndef != null) {
+                ndef.connect()
+                if (ndef.isWritable) {
+                    // 创建一个空的NDEF消息
+                    val emptyMessage = NdefMessage(arrayOf())
+                    ndef.writeNdefMessage(emptyMessage)
+                }
+                ndef.close()
+            }
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Failed to clear NFC tag", e)
+            Toast.makeText(this, "清空NFC标签失败", Toast.LENGTH_SHORT).show()
+            return
+        }
+    
         // 修改为当前 APP 的 scheme，并包含 nfcId
         val scheme = "noteslip://note-edit?nfcId=$nfcId"
-        
+    
         // 创建URI Record
         val uriRecord = NdefRecord.createUri(scheme)
-        
+    
         // 创建Android Application Record
         val aarRecord = NdefRecord.createApplicationRecord("com.example.noteslip")
-        
+    
         // 创建NDEF消息
         val message = NdefMessage(arrayOf(uriRecord, aarRecord))
-        
+    
         // 写入NFC标签
         val ndef = Ndef.get(tag)
         if (ndef != null) {
-            ndef.connect()
-            if (!ndef.isWritable) {
-                throw Exception("NFC标签不可写")
+            try {
+                ndef.connect()
+                if (!ndef.isWritable) {
+                    throw Exception("NFC标签不可写")
+                }
+                if (ndef.maxSize < message.byteArrayLength) {
+                    throw Exception("NFC标签容量不足")
+                }
+                ndef.writeNdefMessage(message)
+                ndef.close()
+            } catch (e: Exception) {
+                Log.e("MainActivity", "Failed to write NFC tag", e)
+                Toast.makeText(this, "写入NFC标签失败", Toast.LENGTH_SHORT).show()
             }
-            if (ndef.maxSize < message.byteArrayLength) {
-                throw Exception("NFC标签容量不足")
-            }
-            ndef.writeNdefMessage(message)
-            ndef.close()
         } else {
-            throw Exception("不支持的NFC标签类型")
+            Log.e("MainActivity", "Unsupported NFC tag type")
+            Toast.makeText(this, "不支持的NFC标签类型", Toast.LENGTH_SHORT).show()
         }
     }
 
