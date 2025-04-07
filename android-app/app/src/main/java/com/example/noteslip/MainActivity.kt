@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity() {
     
         val db = NoteDatabase.getInstance(this)
         val nfcId = bytesToHexString(tag.id)
-
+    
         val allNote = db.noteDao().getAllNotes()
         // 检查便签是否存在
         val existingNote = db.noteDao().getNoteByNfcId(nfcId)
@@ -157,8 +157,7 @@ class MainActivity : AppCompatActivity() {
     
         // 写入NFC标签
         try {
-            val scheme = "weixin://dl/business/?appid=wx7fc49c74d54fdadd&path=/pages/note-edit/index&query=key=${newNote.key}&env_version=release"
-            writeSchemeToTag(tag, scheme)
+            writeSchemeToTag(tag, nfcId)
         } catch (e: Exception) {
             Toast.makeText(this, "写入NFC标签失败", Toast.LENGTH_SHORT).show()
         }
@@ -169,12 +168,15 @@ class MainActivity : AppCompatActivity() {
         startActivity(editIntent)
     }
 
-    private fun writeSchemeToTag(tag: Tag, scheme: String) {
+    private fun writeSchemeToTag(tag: Tag, nfcId: String) {
+        // 修改为当前 APP 的 scheme，并包含 nfcId
+        val scheme = "noteslip://note-edit?nfcId=$nfcId"
+        
         // 创建URI Record
         val uriRecord = NdefRecord.createUri(scheme)
         
         // 创建Android Application Record
-        val aarRecord = NdefRecord.createApplicationRecord("com.tencent.mm")
+        val aarRecord = NdefRecord.createApplicationRecord("com.example.noteslip")
         
         // 创建NDEF消息
         val message = NdefMessage(arrayOf(uriRecord, aarRecord))

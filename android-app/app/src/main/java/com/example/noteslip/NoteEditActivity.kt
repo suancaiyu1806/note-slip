@@ -1,5 +1,6 @@
 package com.example.noteslip
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -17,18 +18,31 @@ class NoteEditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_note_edit)
 
-        // 获取便签key
-        noteKey = intent.getStringExtra("note_key") ?: UUID.randomUUID().toString()
-        
+        // 检查是否通过scheme打开活动
+        val intent = intent
+        if (Intent.ACTION_VIEW == intent.action) {
+            val data = intent.data
+            if (data != null) {
+                // 从scheme中提取note_key
+                noteKey = data.getQueryParameter("key") ?: UUID.randomUUID().toString()
+            } else {
+                // 如果没有从scheme中获取到note_key，使用默认逻辑
+                noteKey = intent.getStringExtra("note_key") ?: UUID.randomUUID().toString()
+            }
+        } else {
+            // 正常启动活动，使用默认逻辑
+            noteKey = intent.getStringExtra("note_key") ?: UUID.randomUUID().toString()
+        }
+
         // 初始化数据库
         db = NoteDatabase.getInstance(this)
-        
+
         // 初始化EditText
         editText = findViewById(R.id.editText)
-        
+
         // 加载便签内容
         loadNote()
-        
+
         // 设置文本变化监听
         editText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
