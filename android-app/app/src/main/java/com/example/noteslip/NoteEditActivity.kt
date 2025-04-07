@@ -6,7 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import com.example.demo.R
+import com.example.noteslip.R
 import java.util.*
 
 class NoteEditActivity : AppCompatActivity() {

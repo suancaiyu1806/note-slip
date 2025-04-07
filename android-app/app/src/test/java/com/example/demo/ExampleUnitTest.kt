@@ -1,4 +1,4 @@
-package com.example.demo
+package com.example.noteslip
 
 import org.junit.Test
 

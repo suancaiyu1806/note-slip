@@ -14,7 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.demo.R
+import com.example.noteslip.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.nio.charset.Charset
 import java.util.*
@@ -134,7 +134,6 @@ class MainActivity : AppCompatActivity() {
         val db = NoteDatabase.getInstance(this)
         val nfcId = bytesToHexString(tag.id)
     
-        val allNote = db.noteDao().getAllNotes()
         // 检查便签是否存在
         val existingNote = db.noteDao().getNoteByNfcId(nfcId)
         if (existingNote != null) {

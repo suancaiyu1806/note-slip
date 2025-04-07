@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.demo"
+    namespace = "com.example.noteslip"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.demo"
+        applicationId = "com.example.noteslip"
         minSdk = 33
         targetSdk = 35
         versionCode = 1
