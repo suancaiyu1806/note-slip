@@ -1,5 +1,6 @@
 package com.example.noteslip
 
+import android.app.AlertDialog
 import android.app.PendingIntent
 import android.content.Intent
 import android.nfc.NdefMessage
@@ -49,12 +50,14 @@ class MainActivity : AppCompatActivity() {
 
             // 初始化RecyclerView
             val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-            noteAdapter = NoteAdapter(notes) { note ->
+            noteAdapter = NoteAdapter(notes, { note ->
                 // 点击便签跳转到编辑页面
                 val editIntent = Intent(this, NoteEditActivity::class.java)
                 editIntent.putExtra("note_key", note.key)
                 startActivity(editIntent)
-            }
+            }, { note ->
+                showDeleteConfirmationDialog(note)
+            })
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(this@MainActivity)
                 adapter = noteAdapter
@@ -118,20 +121,22 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleNFCDiscovery(tag: Tag) {
         if (isCreatingNote) return
-
+    
         val db = NoteDatabase.getInstance(this)
         val nfcId = bytesToHexString(tag.id)
-        
+
+        val allNote = db.noteDao().getAllNotes()
         // 检查便签是否存在
         val existingNote = db.noteDao().getNoteByNfcId(nfcId)
         if (existingNote != null) {
+            Log.d("MainActivity", "NFC标签已绑定便签，跳转到编辑页面")
             // 便签已存在，跳转到编辑页面
             val editIntent = Intent(this, NoteEditActivity::class.java)
             editIntent.putExtra("note_key", existingNote.key)
             startActivity(editIntent)
             return
         }
-
+    
         // 创建新便签
         isCreatingNote = true
         val newNote = Note(
@@ -140,10 +145,10 @@ class MainActivity : AppCompatActivity() {
             content = "",
             createTime = System.currentTimeMillis()
         )
-        
+    
         // 保存便签
         db.noteDao().insertNote(newNote)
-
+    
         // 写入NFC标签
         try {
             val scheme = "weixin://dl/business/?appid=wx7fc49c74d54fdadd&path=/pages/note-edit/index&query=key=${newNote.key}&env_version=release"
@@ -151,7 +156,7 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Toast.makeText(this, "写入NFC标签失败", Toast.LENGTH_SHORT).show()
         }
-
+    
         // 跳转到编辑页面
         val editIntent = Intent(this, NoteEditActivity::class.java)
         editIntent.putExtra("note_key", newNote.key)
@@ -195,5 +200,29 @@ class MainActivity : AppCompatActivity() {
             sb.append(hex)
         }
         return sb.toString()
+    }
+
+    private fun showDeleteConfirmationDialog(note: Note) {
+        AlertDialog.Builder(this)
+           .setTitle("确认删除")
+           .setMessage("确定要删除这条便签吗？")
+           .setPositiveButton("删除") { _, _ ->
+                deleteNote(note)
+            }
+           .setNegativeButton("取消", null)
+           .show()
+    }
+
+    private fun deleteNote(note: Note) {
+        try {
+            val context = applicationContext
+            val db = NoteDatabase.getInstance(context)
+            db.noteDao().deleteNote(note)
+            notes.remove(note)
+            noteAdapter.notifyDataSetChanged()
+        } catch (e: Exception) {
+            Log.e("NoteDatabaseError", "Failed to delete note", e)
+            Toast.makeText(this, "删除便签失败，请检查日志", Toast.LENGTH_SHORT).show()
+        }
     }
 }

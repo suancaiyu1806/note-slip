@@ -48,8 +48,10 @@ class NoteEditActivity : AppCompatActivity() {
 
     private fun saveNote() {
         val content = editText.text.toString()
+        val nfcId = db.noteDao().getNoteByKey(noteKey)?.nfcId ?: noteKey
         val note = Note(
             key = noteKey,
+            nfcId = nfcId,
             content = content,
             createTime = System.currentTimeMillis()
         )
@@ -60,4 +62,4 @@ class NoteEditActivity : AppCompatActivity() {
         super.onDestroy()
         saveNote()
     }
-} 
+}

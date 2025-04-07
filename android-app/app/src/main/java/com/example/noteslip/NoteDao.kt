@@ -11,7 +11,7 @@ interface NoteDao {
     @Query("SELECT * FROM notes WHERE `key` = :key")
     fun getNoteByKey(key: String): Note?
 
-    @Query("SELECT * FROM notes WHERE nfcId = :nfcId")
+    @Query("SELECT * FROM notes WHERE `nfcId` = :nfcId")
     fun getNoteByNfcId(nfcId: String): Note?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

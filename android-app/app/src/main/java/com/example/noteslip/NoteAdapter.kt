@@ -9,10 +9,7 @@ import com.example.demo.R
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NoteAdapter(
-    private val notes: List<Note>,
-    private val onNoteClick: (Note) -> Unit
-) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+class NoteAdapter(private val notes: MutableList<Note>, private val onItemClick: (Note) -> Unit, private val onItemLongClick: (Note) -> Unit) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     private val dateFormat = SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.getDefault())
 
@@ -38,9 +35,13 @@ class NoteAdapter(
         
         // 设置点击事件
         holder.itemView.setOnClickListener {
-            onNoteClick(note)
+            onItemClick(note)
+        }
+        holder.itemView.setOnLongClickListener {
+            onItemLongClick(note)
+            true
         }
     }
 
     override fun getItemCount() = notes.size
-} 
+}
