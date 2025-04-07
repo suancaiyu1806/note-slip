@@ -26,53 +26,64 @@ class MainActivity : AppCompatActivity() {
     private var isCreatingNote = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        try {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_main)
 
-        // 初始化NFC
-        nfcAdapter = NfcAdapter.getDefaultAdapter(this)
-        if (!nfcAdapter.isEnabled) {
-            Toast.makeText(this, "设备不支持NFC", Toast.LENGTH_SHORT).show()
-            finish()
-            return
-        }
+            // 初始化NFC
+            nfcAdapter = NfcAdapter.getDefaultAdapter(this)
+            if (nfcAdapter == null || !nfcAdapter.isEnabled) {
+                Toast.makeText(this, "设备不支持NFC", Toast.LENGTH_SHORT).show()
+                finish()
+                return
+            }
 
-        // 创建PendingIntent
-        val intent = Intent(this, javaClass).apply {
-            addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-        }
-        pendingIntent = PendingIntent.getActivity(
-            this, 0, intent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
-        )
+            // 创建PendingIntent
+            val intent = Intent(this, javaClass).apply {
+                addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            }
+            pendingIntent = PendingIntent.getActivity(
+                this, 0, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+            )
 
-        // 初始化RecyclerView
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        noteAdapter = NoteAdapter(notes) { note ->
-            // 点击便签跳转到编辑页面
-            val editIntent = Intent(this, NoteEditActivity::class.java)
-            editIntent.putExtra("note_key", note.key)
-            startActivity(editIntent)
-        }
-        recyclerView.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = noteAdapter
-        }
+            // 初始化RecyclerView
+            val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+            noteAdapter = NoteAdapter(notes) { note ->
+                // 点击便签跳转到编辑页面
+                val editIntent = Intent(this, NoteEditActivity::class.java)
+                editIntent.putExtra("note_key", note.key)
+                startActivity(editIntent)
+            }
+            recyclerView.apply {
+                layoutManager = LinearLayoutManager(this@MainActivity)
+                adapter = noteAdapter
+            }
 
-        // 加载本地便签
-        loadNotes()
+            // 加载本地便签
+            loadNotes()
 
-        // 设置悬浮按钮
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
-            val editIntent = Intent(this, NoteEditActivity::class.java)
-            startActivity(editIntent)
+            // 设置悬浮按钮
+            findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
+                val editIntent = Intent(this, NoteEditActivity::class.java)
+                startActivity(editIntent)
+            }
+        } catch (e: Exception) {
+            Log.e("MainActivity", "onCreate: 发生异常", e)
+            Toast.makeText(this, "应用启动时发生错误，请检查日志", Toast.LENGTH_LONG).show()
         }
     }
 
     override fun onResume() {
         super.onResume()
-        if (!isCreatingNote) {
-            nfcAdapter.enableForegroundDispatch(this, pendingIntent, null, null)
+        // 检查 nfcAdapter 是否为 null
+        if (nfcAdapter != null && !isCreatingNote) {
+            try {
+                nfcAdapter.enableForegroundDispatch(this, pendingIntent, null, null)
+            } catch (e: Exception) {
+                Log.e("MainActivity", "Failed to enable foreground dispatch", e)
+                Toast.makeText(this, "无法启用NFC前台调度，请检查设置", Toast.LENGTH_SHORT).show()
+            }
         }
         loadNotes()
     }
@@ -185,4 +196,4 @@ class MainActivity : AppCompatActivity() {
         }
         return sb.toString()
     }
-} 
+}
