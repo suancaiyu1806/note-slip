@@ -71,9 +71,57 @@ class MainActivity : AppCompatActivity() {
                 val editIntent = Intent(this, NoteEditActivity::class.java)
                 startActivity(editIntent)
             }
+
+            // 处理scheme逻辑
+            handleSchemeIntent(intent)
         } catch (e: Exception) {
             Log.e("MainActivity", "onCreate: 发生异常", e)
             Toast.makeText(this, "应用启动时发生错误，请检查日志", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        if (NfcAdapter.ACTION_TAG_DISCOVERED == intent?.action || NfcAdapter.ACTION_NDEF_DISCOVERED == intent?.action) {
+            val tag: Tag? = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG)
+            tag?.let { handleNFCDiscovery(it) }
+        }
+        // 处理scheme逻辑
+        intent?.let { handleSchemeIntent(it) }
+    }
+
+    private fun handleSchemeIntent(intent: Intent) {
+        if (Intent.ACTION_MAIN == intent.action) {
+            val data = intent.data
+            if (data != null) {
+                val nfcId = data.getQueryParameter("nfcId")
+                if (nfcId != null) {
+                    val db = NoteDatabase.getInstance(this)
+                    val existingNote = db.noteDao().getNoteByNfcId(nfcId)
+                    if (existingNote != null) {
+                        // 便签已存在，跳转到编辑页面
+                        val editIntent = Intent(this, NoteEditActivity::class.java)
+                        editIntent.putExtra("note_key", existingNote.key)
+                        startActivity(editIntent)
+                    } else {
+                        // 创建新便签
+                        isCreatingNote = true
+                        val newNote = Note(
+                            key = UUID.randomUUID().toString(),
+                            nfcId = nfcId,
+                            content = "",
+                            createTime = System.currentTimeMillis()
+                        )
+                        // 保存便签
+                        db.noteDao().insertNote(newNote)
+                        // 跳转到编辑页面
+                        val editIntent = Intent(this, NoteEditActivity::class.java)
+                        editIntent.putExtra("note_key", newNote.key)
+                        startActivity(editIntent)
+                        isCreatingNote = false
+                    }
+                }
+            }
         }
     }
 
@@ -117,14 +165,6 @@ class MainActivity : AppCompatActivity() {
             // 捕获异常并打印日志
             Log.e("NoteDatabaseError", "Failed to get database instance", e)
             // 可以在这里添加更多的错误处理逻辑，比如给用户提示
-        }
-    }
-
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        if (NfcAdapter.ACTION_TAG_DISCOVERED == intent?.action|| NfcAdapter.ACTION_NDEF_DISCOVERED == intent?.action) {
-            val tag: Tag? = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG)
-            tag?.let { handleNFCDiscovery(it) }
         }
     }
 
@@ -172,24 +212,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun writeSchemeToTag(tag: Tag, nfcId: String) {
-        // 清空NFC标签
-        try {
-            val ndef = Ndef.get(tag)
-            if (ndef != null) {
-                ndef.connect()
-                if (ndef.isWritable) {
-                    // 创建一个空的NDEF消息
-                    val emptyMessage = NdefMessage(arrayOf())
-                    ndef.writeNdefMessage(emptyMessage)
-                }
-                ndef.close()
-            }
-        } catch (e: Exception) {
-            Log.e("MainActivity", "Failed to clear NFC tag", e)
-            Toast.makeText(this, "清空NFC标签失败", Toast.LENGTH_SHORT).show()
-            return
-        }
-    
         // 修改为当前 APP 的 scheme，并包含 nfcId
         val scheme = "noteslip://note-edit?nfcId=$nfcId"
     

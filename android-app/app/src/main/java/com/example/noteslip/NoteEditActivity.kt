@@ -18,21 +18,7 @@ class NoteEditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_note_edit)
 
-        // 检查是否通过scheme打开活动
-        val intent = intent
-        if (Intent.ACTION_VIEW == intent.action) {
-            val data = intent.data
-            if (data != null) {
-                // 从scheme中提取note_key
-                noteKey = data.getQueryParameter("key") ?: UUID.randomUUID().toString()
-            } else {
-                // 如果没有从scheme中获取到note_key，使用默认逻辑
-                noteKey = intent.getStringExtra("note_key") ?: UUID.randomUUID().toString()
-            }
-        } else {
-            // 正常启动活动，使用默认逻辑
-            noteKey = intent.getStringExtra("note_key") ?: UUID.randomUUID().toString()
-        }
+        noteKey = intent.getStringExtra("note_key") ?: UUID.randomUUID().toString()
 
         // 初始化数据库
         db = NoteDatabase.getInstance(this)
