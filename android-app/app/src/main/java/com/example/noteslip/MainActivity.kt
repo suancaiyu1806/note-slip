@@ -79,21 +79,27 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        // 检查 nfcAdapter 是否为 null
-        if (nfcAdapter != null && !isCreatingNote) {
+        // 确保 nfcAdapter 不为 null 且设备支持 NFC 并已开启
+        if (nfcAdapter != null && nfcAdapter.isEnabled) {
             try {
+                // 开启 NFC 前台调度
                 nfcAdapter.enableForegroundDispatch(this, pendingIntent, null, null)
             } catch (e: Exception) {
                 Log.e("MainActivity", "Failed to enable foreground dispatch", e)
                 Toast.makeText(this, "无法启用NFC前台调度，请检查设置", Toast.LENGTH_SHORT).show()
             }
         }
+        // 加载本地便签
         loadNotes()
     }
 
     override fun onPause() {
         super.onPause()
-        nfcAdapter.disableForegroundDispatch(this)
+        // 确保 nfcAdapter 不为 null
+        if (nfcAdapter != null) {
+            // 关闭 NFC 前台调度
+            nfcAdapter.disableForegroundDispatch(this)
+        }
     }
 
     private fun loadNotes() {
