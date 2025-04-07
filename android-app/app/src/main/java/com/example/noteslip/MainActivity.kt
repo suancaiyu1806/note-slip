@@ -79,26 +79,29 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        // 确保 nfcAdapter 不为 null 且设备支持 NFC 并已开启
+        // 确保 nfcAdapter 不为 null 且已启用
         if (nfcAdapter != null && nfcAdapter.isEnabled) {
             try {
-                // 开启 NFC 前台调度
+                // 启用 APP 的 NFC 前台调度，禁用系统默认的 NFC 读取能力
                 nfcAdapter.enableForegroundDispatch(this, pendingIntent, null, null)
             } catch (e: Exception) {
                 Log.e("MainActivity", "Failed to enable foreground dispatch", e)
                 Toast.makeText(this, "无法启用NFC前台调度，请检查设置", Toast.LENGTH_SHORT).show()
             }
         }
-        // 加载本地便签
         loadNotes()
     }
 
     override fun onPause() {
         super.onPause()
-        // 确保 nfcAdapter 不为 null
-        if (nfcAdapter != null) {
-            // 关闭 NFC 前台调度
-            nfcAdapter.disableForegroundDispatch(this)
+        // 确保 nfcAdapter 不为 null 且已启用
+        if (nfcAdapter != null && nfcAdapter.isEnabled) {
+            try {
+                // 禁用 APP 的 NFC 前台调度，恢复系统默认的 NFC 读取能力
+                nfcAdapter.disableForegroundDispatch(this)
+            } catch (e: Exception) {
+                Log.e("MainActivity", "Failed to disable foreground dispatch", e)
+            }
         }
     }
 
@@ -119,7 +122,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        if (NfcAdapter.ACTION_TAG_DISCOVERED == intent?.action) {
+        if (NfcAdapter.ACTION_TAG_DISCOVERED == intent?.action|| NfcAdapter.ACTION_NDEF_DISCOVERED == intent?.action) {
             val tag: Tag? = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG)
             tag?.let { handleNFCDiscovery(it) }
         }
