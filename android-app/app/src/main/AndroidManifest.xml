@@ -27,25 +27,11 @@
                 <action android:name="android.nfc.action.TAG_DISCOVERED"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
-            <!-- 添加对自定义 scheme 的支持 -->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.VIEW" />-->
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--                <category android:name="android.intent.category.BROWSABLE" />-->
-<!--                <data android:scheme="noteslip" />-->
-<!--            </intent-filter>-->
         </activity>
 
         <activity
             android:name="com.example.noteslip.NoteEditActivity"
             android:exported="true">
-<!--             如果需要 NoteEditActivity 处理 scheme，也可以添加相应的 intent-filter-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.VIEW" />-->
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--                <category android:name="android.intent.category.BROWSABLE" />-->
-<!--                <data android:scheme="noteslip" />-->
-<!--            </intent-filter>-->
         </activity>
     </application>
 

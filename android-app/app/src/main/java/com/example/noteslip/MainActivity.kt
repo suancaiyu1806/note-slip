@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleSchemeIntent(intent: Intent) {
-        if (Intent.ACTION_MAIN == intent.action) {
+        if (Intent.ACTION_VIEW == intent.action) {
             val data = intent.data
             if (data != null) {
                 val nfcId = data.getQueryParameter("nfcId")
@@ -217,13 +217,13 @@ class MainActivity : AppCompatActivity() {
     
         // 创建URI Record
         val uriRecord = NdefRecord.createUri(scheme)
-    
+
         // 创建Android Application Record
-        val aarRecord = NdefRecord.createApplicationRecord("com.example.noteslip")
+        val appRecord = NdefRecord.createApplicationRecord("com.example.noteslip")
     
         // 创建NDEF消息
-        val message = NdefMessage(arrayOf(uriRecord, aarRecord))
-    
+        val message = NdefMessage(arrayOf(uriRecord, appRecord))
+
         // 写入NFC标签
         val ndef = Ndef.get(tag)
         if (ndef != null) {
