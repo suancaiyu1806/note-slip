@@ -10,6 +10,7 @@ import android.nfc.Tag
 import android.nfc.tech.Ndef
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -70,6 +71,12 @@ class MainActivity : AppCompatActivity() {
             findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
                 val editIntent = Intent(this, NoteEditActivity::class.java)
                 startActivity(editIntent)
+            }
+
+            // 设置灵感社区按钮
+            findViewById<Button>(R.id.btn_inspiration_community).setOnClickListener {
+                val communityIntent = Intent(this, InspirationCommunityActivity::class.java)
+                startActivity(communityIntent)
             }
 
             // 处理scheme逻辑

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <!-- 上中下垂直布局的主容器 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 顶部固定区域 (带吸顶效果) -->
+        <LinearLayout
+            android:id="@+id/layout_sticky_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:elevation="2dp">
+
+            <!-- 顶部导航栏 -->
+            <include
+                android:id="@+id/include_navigation_bar"
+                layout="@layout/component_navigation_bar" />
+
+            <!-- 话题信息头部 -->
+            <include
+                android:id="@+id/include_topic_header"
+                layout="@layout/component_topic_header" />
+
+            <!-- 内容筛选标签栏 -->
+            <include
+                android:id="@+id/include_filter_tabs"
+                layout="@layout/component_filter_tabs" />
+
+        </LinearLayout>
+
+        <!-- 中部核心内容展示区 (可垂直滚动) -->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- 瀑布流内容区域 -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_content_feed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:paddingHorizontal="4dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="32dp"
+                    android:clipToPadding="false" />
+
+                <!-- 底部加载更多提示 -->
+                <LinearLayout
+                    android:id="@+id/layout_load_more"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-没有更多内容了，轻触返回顶部-"
+                        android:textSize="12sp"
+                        android:textColor="#66000000"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+    <!-- 浮动发布按钮 (层级最上层，固定悬浮于页面右下角) -->
+    <include
+        android:id="@+id/include_floating_publish_button"
+        layout="@layout/component_floating_publish_button" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout> 

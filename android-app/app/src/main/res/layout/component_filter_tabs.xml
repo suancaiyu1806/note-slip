@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@android:color/white"
+    android:gravity="center_vertical">
+
+    <!-- 精选标签 -->
+    <LinearLayout
+        android:id="@+id/tab_featured"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        android:gravity="center"
+        android:background="?android:attr/selectableItemBackground">
+
+        <TextView
+            android:id="@+id/tv_featured"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="精选"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="4dp" />
+
+        <!-- 选中状态下的指示线 -->
+        <View
+            android:id="@+id/indicator_featured"
+            android:layout_width="20dp"
+            android:layout_height="2dp"
+            android:background="@android:color/black"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <!-- 最新标签 -->
+    <LinearLayout
+        android:id="@+id/tab_latest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        android:gravity="center"
+        android:background="?android:attr/selectableItemBackground">
+
+        <TextView
+            android:id="@+id/tv_latest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="最新"
+            android:textSize="16sp"
+            android:textColor="#80000000"
+            android:layout_marginBottom="4dp" />
+
+        <!-- 未选中状态下的透明指示线 -->
+        <View
+            android:id="@+id/indicator_latest"
+            android:layout_width="20dp"
+            android:layout_height="2dp"
+            android:background="#20000000"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+    <!-- 右侧填充空间 -->
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" />
+
+</LinearLayout> 
