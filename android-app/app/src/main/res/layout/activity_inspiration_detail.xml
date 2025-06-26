@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- 顶部导航栏 - 固定 -->
+    <include
+        android:id="@+id/navigation_bar"
+        layout="@layout/component_navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <!-- 底部操作栏 - 固定 -->
+    <LinearLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:gravity="center_vertical"
+        android:elevation="8dp">
+
+        <!-- 左侧社交互动区域 -->
+        <include
+            android:id="@+id/social_interaction"
+            layout="@layout/component_social_interaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- 占位空间 -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <!-- 右侧主要功能按钮 -->
+        <include
+            android:id="@+id/action_button"
+            layout="@layout/component_action_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <!-- 中间内容区域 - 可滚动 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/navigation_bar"
+        android:layout_above="@id/bottom_bar"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 内容卡片 -->
+            <include
+                android:id="@+id/content_card"
+                layout="@layout/component_content_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- 底部额外空间，确保内容可以完全显示 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout> 

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="42dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <!-- 点赞区域 -->
+    <LinearLayout
+        android:id="@+id/ll_like"
+        android:layout_width="28dp"
+        android:layout_height="42dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_marginEnd="24dp">
+
+        <ImageView
+            android:id="@+id/iv_like"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_heart"
+            android:scaleType="center" />
+
+        <TextView
+            android:id="@+id/tv_like_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123"
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:layout_marginTop="1dp" />
+
+    </LinearLayout>
+
+    <!-- 收藏区域 -->
+    <LinearLayout
+        android:id="@+id/ll_favorite"
+        android:layout_width="28dp"
+        android:layout_height="42dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_marginEnd="24dp">
+
+        <ImageView
+            android:id="@+id/iv_favorite"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_star"
+            android:scaleType="center" />
+
+        <TextView
+            android:id="@+id/tv_favorite_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="332"
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:layout_marginTop="1dp" />
+
+    </LinearLayout>
+
+    <!-- 评论区域 -->
+    <LinearLayout
+        android:id="@+id/ll_comment"
+        android:layout_width="28dp"
+        android:layout_height="42dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="?attr/selectableItemBackgroundBorderless">
+
+        <ImageView
+            android:id="@+id/iv_comment"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_comment"
+            android:scaleType="center" />
+
+        <TextView
+            android:id="@+id/tv_comment_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="41"
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:layout_marginTop="1dp" />
+
+    </LinearLayout>
+
+</LinearLayout> 

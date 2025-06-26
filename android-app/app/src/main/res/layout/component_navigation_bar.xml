@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="#FFFFFF"
+    android:paddingStart="6dp"
+    android:paddingEnd="6dp"
+    android:elevation="4dp">
+
+    <!-- 左侧区域 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- 返回按钮 -->
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/ic_arrow_back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="center"
+            android:contentDescription="返回" />
+
+        <!-- 作者信息区域 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginStart="12dp">
+
+            <!-- 作者头像 -->
+            <ImageView
+                android:id="@+id/iv_author_avatar"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/default_avatar"
+                android:scaleType="centerCrop" />
+
+            <!-- 作者昵称 -->
+            <TextView
+                android:id="@+id/tv_author_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="古丽娅"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+        <!-- 关注按钮 -->
+        <Button
+            android:id="@+id/btn_follow"
+            android:layout_width="56dp"
+            android:layout_height="28dp"
+            android:text="关注"
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:background="@drawable/bg_follow_button"
+            android:layout_marginStart="12dp" />
+
+    </LinearLayout>
+
+    <!-- 右侧分享按钮 -->
+    <ImageView
+        android:id="@+id/btn_share"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:src="@drawable/ic_share"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:scaleType="center"
+        android:contentDescription="分享" />
+
+</LinearLayout> 
