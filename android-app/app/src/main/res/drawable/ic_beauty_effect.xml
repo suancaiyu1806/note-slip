@@ -1,0 +1,15 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="36dp"
+    android:height="36dp"
+    android:viewportWidth="36"
+    android:viewportHeight="36">
+    
+    <path
+        android:fillColor="#99FFFFFF"
+        android:pathData="M18,18m-18,0a18,18 0,1 1,36 0a18,18 0,1 1,-36 0" />
+    
+    <!-- 星星图标 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M18,8l2.5,7.5h7.5l-6,4.5l2.5,7.5l-6,-4.5l-6,4.5l2.5,-7.5l-6,-4.5h7.5z" />
+</vector> 

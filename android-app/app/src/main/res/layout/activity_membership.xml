@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2A2C2B"
+    android:fillViewport="true"
+    tools:context=".MembershipActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 顶部导航栏 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#2A2C2B">
+
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:padding="12dp"
+                android:src="@drawable/ic_back_white"
+                android:contentDescription="返回" />
+
+        </RelativeLayout>
+
+        <!-- 主要内容区域 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/gradient_background">
+
+            <!-- 染发主题区域 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="330dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <!-- 主图 -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/hair_style_image"
+                    android:scaleType="centerCrop" />
+
+                <!-- 染发选项 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="浓密黑"
+                        android:textColor="#FFFFFF"
+                        android:textSize="9sp"
+                        android:background="@drawable/hair_color_tag_background"
+                        android:padding="4dp"
+                        android:layout_marginEnd="3dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="冷木灰"
+                        android:textColor="#FFFFFF"
+                        android:textSize="9sp"
+                        android:background="@drawable/hair_color_tag_background"
+                        android:padding="4dp"
+                        android:layout_marginEnd="3dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="亚麻冷棕"
+                        android:textColor="#FFFFFF"
+                        android:textSize="9sp"
+                        android:background="@drawable/hair_color_tag_background"
+                        android:padding="4dp" />
+
+                </LinearLayout>
+
+                <!-- 潮流染发标题 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="潮流染发"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="4dp" />
+
+                    <View
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/play_icon_background" />
+
+                </LinearLayout>
+
+                <!-- 描述文字 -->
+                <TextView
+                    android:layout_width="168dp"
+                    android:layout_height="wrap_content"
+                    android:text="黑科技染发，不爆顶，无补根，潮流发色，立即拥有"
+                    android:textColor="#99FFFFFF"
+                    android:textSize="11sp"
+                    android:textAlignment="center"
+                    android:lineSpacingExtra="2dp" />
+
+            </LinearLayout>
+
+            <!-- 功能区域 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="20dp"
+                android:background="#2A2C2B">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_hair_dye"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="染发体验"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_face_beauty"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="极致面部"
+                        android:textColor="#99FFFFFF"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_beauty_effect"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="体贴美颜"
+                        android:textColor="#99FFFFFF"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_auto_adjust"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="智能调节"
+                        android:textColor="#99FFFFFF"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- VIP订阅区域 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="16dp">
+
+            <!-- 幸运折扣标题 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="幸运折扣"
+                android:textColor="#000000"
+                android:textSize="9sp"
+                android:textStyle="bold"
+                android:background="@drawable/discount_tag_background"
+                android:padding="6dp"
+                android:layout_marginBottom="20dp" />
+
+            <!-- 成为醒图VIP -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="成为醒图VIP"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp" />
+
+            <!-- 套餐选择区域 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+
+                <!-- 连续包月首月 -->
+                <LinearLayout
+                    android:id="@+id/firstMonthPackage"
+                    android:layout_width="0dp"
+                    android:layout_height="114dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/selected_package_background"
+                    android:layout_marginEnd="5dp"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="连续包月首月"
+                        android:textColor="#666666"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¥9"
+                        android:textColor="#000000"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="2dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¥30"
+                        android:textColor="#999999"
+                        android:textSize="10sp"
+                        android:background="@drawable/strikethrough_background"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="折合¥9.8/月"
+                        android:textColor="#000000"
+                        android:textSize="8sp"
+                        android:background="@drawable/monthly_rate_background"
+                        android:padding="4dp" />
+
+                    <!-- 幸运折扣标签 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="幸运折扣"
+                        android:textColor="#FFFFFF"
+                        android:textSize="9sp"
+                        android:background="@drawable/lucky_discount_background"
+                        android:padding="3dp"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+                <!-- 连续包年 -->
+                <LinearLayout
+                    android:id="@+id/yearlyPackage"
+                    android:layout_width="0dp"
+                    android:layout_height="114dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/unselected_package_background"
+                    android:layout_marginEnd="5dp"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="连续包年"
+                        android:textColor="#666666"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¥118"
+                        android:textColor="#000000"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="2dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¥198"
+                        android:textColor="#999999"
+                        android:textSize="10sp"
+                        android:background="@drawable/strikethrough_background"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="折合¥9.8/月"
+                        android:textColor="#000000"
+                        android:textSize="8sp"
+                        android:background="@drawable/monthly_rate_background"
+                        android:padding="4dp" />
+
+                    <!-- 优惠最多标签 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="优惠最多"
+                        android:textColor="#FFFFFF"
+                        android:textSize="9sp"
+                        android:background="@drawable/best_deal_background"
+                        android:padding="3dp"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+                <!-- 年卡 -->
+                <LinearLayout
+                    android:id="@+id/regularYearlyPackage"
+                    android:layout_width="0dp"
+                    android:layout_height="114dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/unselected_package_background"
+                    android:layout_marginEnd="5dp"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="年卡"
+                        android:textColor="#666666"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¥198"
+                        android:textColor="#000000"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="2dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="折合¥16/月"
+                        android:textColor="#000000"
+                        android:textSize="8sp"
+                        android:background="@drawable/monthly_rate_background"
+                        android:padding="4dp"
+                        android:layout_marginTop="16dp" />
+
+                </LinearLayout>
+
+                <!-- 月卡 -->
+                <LinearLayout
+                    android:id="@+id/monthlyPackage"
+                    android:layout_width="0dp"
+                    android:layout_height="114dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/unselected_package_background"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="月卡"
+                        android:textColor="#666666"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¥30"
+                        android:textColor="#000000"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="16dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 续费说明 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="次月起¥18/月·自动续期·可取消"
+                android:textColor="#99000000"
+                android:textSize="11sp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- 会员特权说明 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="正在使用付费模板,开通会员解锁所有特权"
+                android:textColor="#666666"
+                android:textSize="11sp"
+                android:layout_marginBottom="24dp" />
+
+            <!-- 服务条款 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="确认购买后,您的签约账户将被收取费用,订阅将会在当前前订阅结束前24小时内自动续订并扣费。您可以随时关闭自动续费,退订流程:醒图->我的->VIP角标->续费管取消。"
+                android:textColor="#99000000"
+                android:textSize="9sp"
+                android:lineSpacingExtra="2dp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- 底部链接 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="移除效果"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="20dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="10dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginEnd="20dp" />
+
+                <TextView
+                    android:id="@+id/memberAgreement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="会员协议"
+                    android:textColor="#99000000"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="20dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="10dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginEnd="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⚠️我已是VIP"
+                    android:textColor="#000000"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 底部订阅区域 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="16dp">
+
+            <!-- 同意协议 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <CheckBox
+                    android:id="@+id/agreeCheckbox"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginEnd="6dp"
+                    android:checked="false" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已阅读并同意"
+                    android:textColor="#99000000"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="会员协议"
+                    android:textColor="#000000"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <!-- 立即订阅按钮 -->
+            <LinearLayout
+                android:id="@+id/subscribeButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@drawable/subscribe_button_background"
+                android:layout_marginBottom="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="立即订阅"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:id="@+id/subscribeButtonText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥9"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView> 

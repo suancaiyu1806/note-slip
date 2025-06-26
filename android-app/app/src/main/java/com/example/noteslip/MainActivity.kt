@@ -11,6 +11,7 @@ import android.nfc.tech.Ndef
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -70,6 +71,12 @@ class MainActivity : AppCompatActivity() {
             findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
                 val editIntent = Intent(this, NoteEditActivity::class.java)
                 startActivity(editIntent)
+            }
+
+            // 设置VIP会员按钮
+            findViewById<Button>(R.id.btnVipMembership).setOnClickListener {
+                val membershipIntent = Intent(this, MembershipActivity::class.java)
+                startActivity(membershipIntent)
             }
 
             // 处理scheme逻辑
