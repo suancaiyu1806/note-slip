@@ -71,6 +71,12 @@ class MainActivity : AppCompatActivity() {
                 val editIntent = Intent(this, NoteEditActivity::class.java)
                 startActivity(editIntent)
             }
+            
+            // 设置 VIP 按钮
+            findViewById<FloatingActionButton>(R.id.fab_vip).setOnClickListener {
+                val vipIntent = Intent(this, VipSubscriptionActivity::class.java)
+                startActivity(vipIntent)
+            }
 
             // 处理scheme逻辑
             handleSchemeIntent(intent)

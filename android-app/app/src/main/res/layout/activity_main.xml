@@ -21,4 +21,15 @@
         android:src="@android:drawable/ic_input_add"
         app:fabSize="normal"/>
 
+    <!-- VIP 入口按钮 -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_vip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"
+        android:src="@android:drawable/btn_star"
+        android:backgroundTint="#FFD700"
+        app:fabSize="mini"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout> 
