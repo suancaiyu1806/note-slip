@@ -33,6 +33,12 @@
             android:name="com.example.noteslip.NoteEditActivity"
             android:exported="true">
         </activity>
+
+        <activity
+            android:name="com.example.noteslip.InspirationCommunityActivity"
+            android:exported="true"
+            android:theme="@style/Theme.NoteSlip.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

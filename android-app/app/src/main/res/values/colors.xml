@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <!-- 灵感社区页面颜色 -->
+    <color name="gray_text">#80000000</color>
+    <color name="green_text">#77BC52</color>
+    <color name="light_green">#B0F917</color>
+    <color name="ai_gradient_start">#B0F917</color>
+    <color name="ai_gradient_end">#55D6FE</color>
+    <color name="usage_tag_background">#B34D4D4D</color>
+    <color name="live_indicator">#F5F5F5</color>
 </resources>

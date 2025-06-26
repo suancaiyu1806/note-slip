@@ -72,6 +72,12 @@ class MainActivity : AppCompatActivity() {
                 startActivity(editIntent)
             }
 
+            // 设置灵感社区按钮
+            findViewById<android.widget.Button>(R.id.btnInspirationCommunity).setOnClickListener {
+                val intent = Intent(this, InspirationCommunityActivity::class.java)
+                startActivity(intent)
+            }
+
             // 处理scheme逻辑
             handleSchemeIntent(intent)
         } catch (e: Exception) {
