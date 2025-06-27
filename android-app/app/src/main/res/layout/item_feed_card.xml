@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    android:orientation="vertical"
+    android:background="@drawable/card_background"
+    android:padding="0dp">
+
+    <!-- 卡片图片容器 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="254dp">
+
+        <!-- 卡片图片 -->
+        <ImageView
+            android:id="@+id/iv_card_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="@drawable/image_background" />
+
+        <!-- LIVE标识 -->
+        <ImageView
+            android:id="@+id/iv_live_badge"
+            android:layout_width="@dimen/live_badge_size"
+            android:layout_height="@dimen/live_badge_size"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_live_badge"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <!-- 卡片内容 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/card_padding"
+        android:layout_marginBottom="10dp">
+
+        <!-- 标题 -->
+        <TextView
+            android:id="@+id/tv_card_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="超自然精致伪素颜超看！！"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/card_title_size"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <!-- 底部信息栏 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- 用户信息 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- 用户头像 -->
+                <ImageView
+                    android:id="@+id/iv_user_avatar"
+                    android:layout_width="@dimen/avatar_size"
+                    android:layout_height="@dimen/avatar_size"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_default_avatar"
+                    android:background="@drawable/circle_background" />
+
+                <!-- 用户名 -->
+                <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aarttion"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/card_username_size"
+                    android:maxWidth="91dp"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+            </LinearLayout>
+
+            <!-- 互动信息 -->
+            <LinearLayout
+                android:id="@+id/layout_interaction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- 爱心图标 -->
+                <ImageView
+                    android:id="@+id/iv_heart"
+                    android:layout_width="@dimen/heart_icon_size"
+                    android:layout_height="@dimen/heart_icon_size"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/ic_heart_outline" />
+
+                <!-- 点赞数 -->
+                <TextView
+                    android:id="@+id/tv_like_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="223"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/card_stats_size"
+                    android:minWidth="22dp" />
+
+            </LinearLayout>
+
+            <!-- 修同款按钮 -->
+            <TextView
+                android:id="@+id/btn_use_template"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:text="修同款"
+                android:textColor="@color/primary_text"
+                android:textSize="10sp"
+                android:fontFamily="sans-serif-medium"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="@drawable/button_outline"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout> 

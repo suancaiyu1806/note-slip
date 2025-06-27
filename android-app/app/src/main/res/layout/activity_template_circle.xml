@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light">
+
+    <!-- 顶部固定区域 -->
+    <LinearLayout
+        android:id="@+id/layout_top_fixed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:background="@color/background_light">
+
+        <!-- 顶部导航栏 -->
+        <include
+            android:id="@+id/navigation_bar"
+            layout="@layout/component_navigation_bar" />
+
+        <!-- 话题信息头部 -->
+        <include
+            android:id="@+id/topic_header"
+            layout="@layout/component_topic_header" />
+
+        <!-- 内容筛选标签栏 -->
+        <include
+            android:id="@+id/filter_tabs"
+            layout="@layout/component_filter_tabs" />
+
+    </LinearLayout>
+
+    <!-- 核心内容展示区 - 双列瀑布流 -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout_top_fixed"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="32dp">
+
+            <!-- 瀑布流容器 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <!-- 左列 -->
+                <LinearLayout
+                    android:id="@+id/layout_left_column"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:orientation="vertical">
+
+                    <!-- 左列卡片会动态添加到这里 -->
+
+                </LinearLayout>
+
+                <!-- 右列 -->
+                <LinearLayout
+                    android:id="@+id/layout_right_column"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:orientation="vertical">
+
+                    <!-- 右列卡片会动态添加到这里 -->
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- 浮动发布按钮 - 固定悬浮右下角，最上层 -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_publish"
+        android:layout_width="@dimen/fab_size"
+        android:layout_height="@dimen/fab_size"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/primary_text"
+        app:tint="@color/background_light"
+        android:contentDescription="发布" />
+
+</RelativeLayout> 

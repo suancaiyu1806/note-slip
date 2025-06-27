@@ -72,6 +72,12 @@ class MainActivity : AppCompatActivity() {
                 startActivity(editIntent)
             }
 
+            // 设置模板圈子按钮
+            findViewById<android.widget.Button>(R.id.btn_template_circle).setOnClickListener {
+                val templateIntent = Intent(this, TemplateCircleActivity::class.java)
+                startActivity(templateIntent)
+            }
+
             // 处理scheme逻辑
             handleSchemeIntent(intent)
         } catch (e: Exception) {

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/topic_padding_vertical"
+    android:paddingBottom="@dimen/topic_padding_bottom"
+    android:paddingLeft="@dimen/default_margin"
+    android:paddingRight="@dimen/default_margin"
+    android:background="@color/background_light">
+
+    <!-- 标题行 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <!-- 标签图标 -->
+        <ImageView
+            android:id="@+id/iv_topic_icon"
+            android:layout_width="@dimen/topic_icon_size"
+            android:layout_height="@dimen/topic_icon_size"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/ic_hashtag"
+            android:contentDescription="话题标签" />
+
+        <!-- 话题标题 -->
+        <TextView
+            android:id="@+id/tv_topic_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="绝美ins自拍模版"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/topic_title_size"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="bold"
+            android:lines="1"
+            android:ellipsize="end" />
+
+    </LinearLayout>
+
+    <!-- 统计信息 -->
+    <TextView
+        android:id="@+id/tv_topic_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1102万次浏览量·1102万次修同款"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/topic_stats_size"
+        android:layout_marginBottom="8dp"
+        android:lines="1"
+        android:ellipsize="end" />
+
+    <!-- 描述文字 -->
+    <TextView
+        android:id="@+id/tv_topic_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="百万粉颜值博主们都在用的ins特效\n使用同款模版，保存后从醒图APP主页选择图片，分享至..."
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/topic_stats_size"
+        android:lineSpacingMultiplier="1.4"
+        android:maxLines="3"
+        android:ellipsize="end" />
+
+</LinearLayout> 

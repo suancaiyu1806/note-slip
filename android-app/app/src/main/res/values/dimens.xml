@@ -1,5 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="default_margin">16dp</dimen>
+    
+    <!-- Navigation bar -->
+    <dimen name="nav_bar_height">48dp</dimen>
+    <dimen name="nav_icon_size">24dp</dimen>
+    <dimen name="nav_padding">6dp</dimen>
+    <dimen name="nav_gap">12dp</dimen>
+    
+    <!-- Topic header -->
+    <dimen name="topic_padding_vertical">12dp</dimen>
+    <dimen name="topic_padding_bottom">16dp</dimen>
+    <dimen name="topic_icon_size">24dp</dimen>
+    <dimen name="topic_title_size">22sp</dimen>
+    <dimen name="topic_stats_size">14sp</dimen>
+    
+    <!-- Filter tabs -->
+    <dimen name="filter_tab_height">44dp</dimen>
+    <dimen name="filter_tab_text_size">16sp</dimen>
+    <dimen name="filter_underline_height">2dp</dimen>
+    <dimen name="filter_underline_width">30dp</dimen>
+    
+    <!-- Feed cards -->
+    <dimen name="card_radius">4dp</dimen>
+    <dimen name="card_gap">4dp</dimen>
+    <dimen name="card_padding">8dp</dimen>
+    <dimen name="card_title_size">14sp</dimen>
+    <dimen name="card_username_size">11sp</dimen>
+    <dimen name="card_stats_size">12sp</dimen>
+    <dimen name="avatar_size">18dp</dimen>
+    <dimen name="heart_icon_size">16dp</dimen>
+    <dimen name="live_badge_size">20dp</dimen>
+    
+    <!-- Floating button -->
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

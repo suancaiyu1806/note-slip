@@ -33,6 +33,15 @@
             android:name="com.example.noteslip.NoteEditActivity"
             android:exported="true">
         </activity>
+
+        <!-- 模板圈子融合页面 -->
+        <activity
+            android:name="com.example.noteslip.TemplateCircleActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoteSlip">
+        </activity>
+
     </application>
 
 </manifest>

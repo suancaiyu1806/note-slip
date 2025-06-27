@@ -1,6 +1,22 @@
 <resources>
-    <string name="app_name">Note Slip</string>
+    <string name="app_name">NoteSlip</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_activity_main">MainActivity</string>
+    
+    <!-- 模板圈子页面 -->
+    <string name="template_circle">模板圈子</string>
+    <string name="topic_title">绝美ins自拍模版</string>
+    <string name="topic_stats">1102万次浏览量·1102万次修同款</string>
+    <string name="topic_description">百万粉颜值博主们都在用的ins特效\n使用同款模版，保存后从醒图APP主页选择图片，分享至...</string>
+    <string name="tab_selected">精选</string>
+    <string name="tab_latest">最新</string>
+    <string name="btn_use_template">修同款</string>
+    <string name="btn_back">返回</string>
+    <string name="btn_share">分享</string>
+    <string name="btn_publish">发布</string>
+    <string name="content_description_topic_icon">话题标签</string>
+    <string name="content_description_live_badge">LIVE标识</string>
+    <string name="content_description_user_avatar">用户头像</string>
 </resources>
