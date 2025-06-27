@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".AIPhotoEditorActivity">
+
+    <!-- 顶部固定区域 -->
+    <FrameLayout
+        android:id="@+id/topFixedContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Banner背景 -->
+        <include
+            android:id="@+id/bannerComponent"
+            layout="@layout/component_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- VIP和搜索栏 -->
+        <include
+            android:id="@+id/topBarComponent"
+            layout="@layout/component_top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top" />
+
+    </FrameLayout>
+
+    <!-- 中间可滚动内容区 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 核心功能面板 -->
+            <include
+                android:id="@+id/functionPanelComponent"
+                layout="@layout/component_function_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- 内容推荐模块 -->
+            <include
+                android:id="@+id/contentRecommendationComponent"
+                layout="@layout/component_content_recommendation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- 底部空白区域，为导航栏留出空间 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="80dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- 底部固定导航栏 -->
+    <include
+        android:id="@+id/bottomNavigationComponent"
+        layout="@layout/component_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout> 

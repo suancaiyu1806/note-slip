@@ -72,6 +72,13 @@ class MainActivity : AppCompatActivity() {
                 startActivity(editIntent)
             }
 
+            // 设置AI修图按钮
+            findViewById<FloatingActionButton>(R.id.aiPhotoEditorFab).setOnClickListener {
+                val aiPhotoIntent = Intent(this, AIPhotoEditorActivity::class.java)
+                startActivity(aiPhotoIntent)
+                Toast.makeText(this, "启动AI修图应用", Toast.LENGTH_SHORT).show()
+            }
+
             // 处理scheme逻辑
             handleSchemeIntent(intent)
         } catch (e: Exception) {

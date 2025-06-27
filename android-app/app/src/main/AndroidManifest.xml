@@ -33,6 +33,14 @@
             android:name="com.example.noteslip.NoteEditActivity"
             android:exported="true">
         </activity>
+
+        <!-- AI修图应用主页面 -->
+        <activity
+            android:name="com.example.noteslip.AIPhotoEditorActivity"
+            android:exported="true"
+            android:label="AI修图"
+            android:theme="@style/Theme.NoteSlip">
+        </activity>
     </application>
 
 </manifest>

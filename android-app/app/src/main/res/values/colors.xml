@@ -7,4 +7,22 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <!-- AI Photo Editor Colors -->
+    <color name="gradient_green_start">#FFD1F386</color>
+    <color name="gradient_green_end">#FFACD651</color>
+    <color name="light_green">#FFADF01D</color>
+    <color name="bright_green">#FFBCF54A</color>
+    <color name="pale_green">#FFEBFAD5</color>
+    <color name="dark_green">#FF2F4207</color>
+    <color name="darker_green">#FF354513</color>
+    <color name="tag_yellow">#FFCAF777</color>
+    <color name="tag_orange">#FFFFEDDB</color>
+    <color name="text_secondary">#80000000</color>
+    <color name="text_tertiary">#4D000000</color>
+    <color name="background_light">#FFEDF1F2</color>
+    <color name="background_overlay">#33000000</color>
+    <color name="background_dark_overlay">#4D000000</color>
+    <color name="red_accent">#FFFF4747</color>
+    <color name="hot_tag">#FFFF2F00</color>
 </resources>
